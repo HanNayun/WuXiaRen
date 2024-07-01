@@ -1,0 +1,22 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:VisualElement name="Background" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Data/UIDocuments/IMG_1523.jpeg?fileID=2800000&amp;guid=8627a9717db9c49c287998f6a8c8f087&amp;type=3#IMG_1523&quot;); background-color: rgba(0, 0, 0, 0); -unity-background-image-tint-color: rgb(255, 255, 255); flex-direction: column; flex-wrap: nowrap; height: 100%; width: 100%; left: 0;">
+        <engine:VisualElement name="TitleDiv" style="flex-grow: 0; flex-shrink: 1; justify-content: center; align-items: flex-start; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 6px; margin-top: 6px; margin-right: 6px; margin-bottom: 6px; margin-left: 6px;">
+            <engine:Label text="TeamData" name="TitleP" style="font-size: 26px; bottom: auto; right: auto; left: 0; top: 0; height: auto; justify-content: flex-start; padding-top: 4px; padding-right: 2px; padding-bottom: 2px; padding-left: 1px; -unity-font-style: bold-and-italic;" />
+        </engine:VisualElement>
+        <engine:VisualElement name="BodyDiv" style="flex-grow: 1; flex-direction: row; height: auto; align-items: center; background-color: rgba(0, 0, 0, 0);">
+            <engine:VisualElement name="RoleDataDiv" style="flex-grow: 0; flex-basis: 25%; background-color: rgba(26, 188, 156, 0.31); height: 95%; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; margin-top: 0; margin-right: 5px; margin-bottom: 0; margin-left: 0;">
+                <engine:VisualElement name="AvatarDiv" style="flex-grow: 0; flex-basis: 50%; padding-top: 2%; padding-right: 2%; padding-bottom: 2%; padding-left: 2%; border-top-left-radius: 15px; border-top-right-radius: 15px; border-bottom-right-radius: 15px; border-bottom-left-radius: 15px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; background-color: rgba(46, 204, 113, 0.63); margin-top: 2%; margin-right: 2%; margin-bottom: 2%; margin-left: 2%;">
+                    <engine:VisualElement name="AvatarImg" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Pictures/SP_1.jpg?fileID=2800000&amp;guid=32b74246f36f0437c9cc63ff1daacf95&amp;type=3#SP_1&quot;); -unity-background-scale-mode: scale-and-crop; align-items: center; justify-content: space-between; align-self: stretch; align-content: stretch; border-top-left-radius: 15px; border-top-right-radius: 15px; border-bottom-right-radius: 15px; border-bottom-left-radius: 15px;" />
+                </engine:VisualElement>
+                <engine:VisualElement name="NameDiv" style="flex-grow: 1; background-color: rgba(50, 132, 200, 0.38);">
+                    <engine:Label text="Label" />
+                </engine:VisualElement>
+                <engine:VisualElement name="StatesDiv" style="flex-grow: 1;">
+                    <engine:VisualElement name="StateDiv" style="flex-grow: 1;">
+                        <engine:VisualElement name="NameP" style="flex-grow: 1;" />
+                    </engine:VisualElement>
+                </engine:VisualElement>
+            </engine:VisualElement>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>
