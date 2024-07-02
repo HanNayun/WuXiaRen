@@ -1,4 +1,4 @@
-namespace Role.RoleBodyPart
+namespace Role.RoleBodyParts
 {
     public class RoleBodyPart
     {
@@ -14,8 +14,8 @@ namespace Role.RoleBodyPart
         }
 
         public string Name { get; private set; }
-        public BodyPartType Type { get; private set; }
-        public int MaxCrucialPoint { get; private set; }
+        public BodyPartType Type { get; private set; } 
+        public int MaxCrucialPoint { get; private set;   }
         public int CurrentCrucialPoint { get; private set; }
     }
 }
