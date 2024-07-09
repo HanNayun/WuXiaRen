@@ -5,17 +5,32 @@ namespace Character
     [CreateAssetMenu(menuName = "Data/CharacterData", fileName = "CharacterData_")]
     public class CharacterData : ScriptableObject
     {
+        public const int RoleMaxLevel = 10;
+        public const int RoleMinLevel = 1;
+
         [SerializeField]
         private Texture2D roleAvatar;
 
         [SerializeField]
         private string roleName;
 
-        [SerializeField]
-        private uint roleLevel;
+        [SerializeField, Range(RoleMinLevel, RoleMaxLevel)]
+        private uint roleStartLevel = 1;
 
         [SerializeField]
         private CharacterStats characterStats;
+
+        private int _roleLevel;
+
+        public int RoleLevel
+        {
+            get => _roleLevel;
+            set
+            {
+                if (_roleLevel == value || value is > RoleMaxLevel or < RoleMinLevel) return;
+                _roleLevel = value;
+            }
+        }
 
         public CharacterStats CharacterStats => characterStats;
 
@@ -23,6 +38,6 @@ namespace Character
 
         public string RoleName => roleName;
 
-        public uint RoleLevel => roleLevel;
+        public uint RoleStartLevel => roleStartLevel;
     }
 }

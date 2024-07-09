@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roleAvatar: {fileID: 2800000, guid: 5fd957851ce3a45a99f854a48d2587a9, type: 3}
   roleName: Li YangLin
-  roleLevel: 1
+  roleStartLevel: 5
   characterStats:
     initiative: 19
     maxHealth: 456

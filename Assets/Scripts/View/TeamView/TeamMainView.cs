@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Character;
+using Team;
+using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace View.TeamView
@@ -6,24 +8,30 @@ namespace View.TeamView
     public class TeamMainView : MonoBehaviour
     {
         [SerializeField]
-        private Texture2D roleAvatar;
-
-        [SerializeField]
-        private string roleName;
+        private TeamData teamData;
 
 
         private VisualElement _rootViewElement;
-        private Label _roleNameLabel1;
-        private VisualElement _roleAvatarElement1;
 
         private void Awake()
         {
             _rootViewElement = GetComponent<UIDocument>().rootVisualElement;
-            _roleNameLabel1 = _rootViewElement.Q<Label>("Label");
-            _roleAvatarElement1 = _rootViewElement.Q<VisualElement>("AvatarImg");
 
-            _roleAvatarElement1.style.backgroundImage = roleAvatar;
-            _roleNameLabel1.text = roleName;
+            var bodyDiv = _rootViewElement.Q<VisualElement>("BodyDiv");
+            bodyDiv.Clear();
+
+            foreach (CharacterData characterData in teamData.CharacterList)
+            {
+                var characterCom = new CharacterCom(characterData)
+                {
+                    style =
+                    {
+                        flexBasis = Length.Percent(25.0f),
+                        flexGrow = 1
+                    }
+                };
+                bodyDiv.Add(characterCom);
+            }
         }
 
         private void Update()

@@ -403,8 +403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68abbfbfd90f4f67a24c8cab7c249fcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roleAvatar: {fileID: 2800000, guid: 5fd957851ce3a45a99f854a48d2587a9, type: 3}
-  roleName: Li YangLin
+  teamData: {fileID: 11400000, guid: 5140c6d8521fb6444832eba140ccc09f, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
