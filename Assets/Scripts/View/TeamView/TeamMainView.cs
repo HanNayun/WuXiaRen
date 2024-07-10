@@ -1,4 +1,5 @@
-﻿using Character;
+﻿using System.Linq;
+using Character;
 using Team;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -7,29 +8,25 @@ namespace View.TeamView
 {
     public class TeamMainView : MonoBehaviour
     {
-        [SerializeField]
-        private TeamData teamData;
+        #region Serialized Fields
 
+        [SerializeField] private TeamData teamData;
+
+        #endregion
 
         private VisualElement _rootViewElement;
+
+        #region Event Functions
 
         private void Awake()
         {
             _rootViewElement = GetComponent<UIDocument>().rootVisualElement;
 
-            var bodyDiv = _rootViewElement.Q<VisualElement>("BodyDiv");
+            VisualElement bodyDiv = _rootViewElement.Q<VisualElement>("BodyDiv");
             bodyDiv.Clear();
 
-            foreach (CharacterData characterData in teamData.CharacterList)
+            foreach (CharacterCom characterCom in teamData.CharacterList.Select(CreateCharacterCom))
             {
-                var characterCom = new CharacterCom(characterData)
-                {
-                    style =
-                    {
-                        flexBasis = Length.Percent(25.0f),
-                        flexGrow = 1
-                    }
-                };
                 bodyDiv.Add(characterCom);
             }
         }
@@ -43,6 +40,20 @@ namespace View.TeamView
                         ? DisplayStyle.None
                         : DisplayStyle.Flex;
             }
+        }
+
+        #endregion
+
+        private static CharacterCom CreateCharacterCom(CharacterData data)
+        {
+            return new CharacterCom(data)
+            {
+                style =
+                {
+                    flexBasis = Length.Percent(25.0f),
+                    flexGrow = 1
+                }
+            };
         }
     }
 }
