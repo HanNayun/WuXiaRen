@@ -40,11 +40,11 @@ namespace Views
         {
             if (_debugMode)
             {
-                SceneLoadManager.LoadScene(SceneKey.DebugRoomScene).Load();
+                SceneLoader.LoadScene(SceneKey.DebugRoomScene);
             }
             else
             {
-                SceneLoadManager.LoadScene(_gameStartScene).Load();
+                SceneLoader.LoadScene(_gameStartScene);
             }
         }
     }
