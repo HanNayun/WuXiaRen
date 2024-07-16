@@ -1,12 +1,10 @@
 using System;
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.SceneManagement;
-using Object = UnityEngine.Object;
 
 namespace Core
 {
@@ -22,15 +20,16 @@ namespace Core
         private static SceneInstance s_sceneInstance;
         public static bool ShowLoading { get; private set; }
         public static bool IsLoaded { get; private set; }
-        public static event Action LoadingStart;
-        public static event Action<float> Loading;
-        public static event Action LoadingSuccess;
-        public static event Action LoadingCompleted;
 
         private void Awake()
         {
             s_instance = this;
         }
+
+        public static event Action LoadingStart;
+        public static event Action<float> Loading;
+        public static event Action LoadingSuccess;
+        public static event Action LoadingCompleted;
 
         public static void ActiveScene()
         {
@@ -47,10 +46,12 @@ namespace Core
                                      bool bLoadAdditive = false,
                                      bool bActiveOnLoad = true)
         {
-            s_instance.StartCoroutine(LoadSceneCoroutine(sceneReference, bShowLoadingScreen, bLoadAdditive, bActiveOnLoad));
+            s_instance.StartCoroutine(LoadSceneCoroutine(sceneReference, bShowLoadingScreen, bLoadAdditive,
+                bActiveOnLoad));
         }
-        
-        private static IEnumerator LoadSceneCoroutine(object sceneKey, bool showLoading, bool loadAdditive, bool activeOnLoad)
+
+        private static IEnumerator LoadSceneCoroutine(object sceneKey, bool showLoading, bool loadAdditive,
+                                                      bool activeOnLoad)
         {
             LoadingStart?.Invoke();
             ShowLoading = showLoading;
