@@ -5,7 +5,7 @@ namespace Core
 {
     public class GameManager : MonoBehaviour
     {
-        private static readonly string GameManagerAddress = "P_GameManager";
+        private const string GameManagerAddress = "P_GameManager";
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         private static void InstantiateGameManager()
