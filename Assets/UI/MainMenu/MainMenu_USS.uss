@@ -1,0 +1,42 @@
+#BtnsDiv {
+    width: auto;
+    right: auto;
+    left: auto;
+    bottom: 50px;
+    top: auto;
+    height: auto;
+    align-items: center;
+    justify-content: flex-end;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0);
+    align-self: center;
+}
+
+#BodyDiv {
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-self: center;
+    align-items: center;
+    background-image: url("project://database/Assets/Pictures/SP_3.jpeg?fileID=2800000&guid=8627a9717db9c49c287998f6a8c8f087&type=3#SP_3");
+    -unity-background-scale-mode: scale-and-crop;
+    -unity-background-image-tint-color: rgb(120, 0, 0);
+}
+
+.btn {
+    width: 600px;
+    height: auto;
+}
+
+.btnText {
+    font-size: 40px;
+    -unity-text-align: upper-center;
+    color: rgb(253, 240, 213);
+    -unity-font-style: bold;
+    -unity-font-definition: url("project://database/Assets/Settings/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&guid=d43d457b1ebcb47f08a6dd6b8e5ce195&type=3#NotInter-Regular");
+}
+
+.btn:hover {
+    background-color: rgb(102, 155, 188);
+}
