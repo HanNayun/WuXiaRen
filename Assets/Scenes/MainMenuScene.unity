@@ -188,7 +188,7 @@ MonoBehaviour:
     m_SubObjectGUID: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  _debugMode: 1
+  _debugMode: 0
 --- !u!1 &2133884794
 GameObject:
   m_ObjectHideFlags: 0
