@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -17,65 +18,52 @@ namespace Core
 
     public class SceneLoader : MonoBehaviour
     {
-        public static SceneLoader Instance { get; private set; }
+        private static SceneLoader s_instance;
+        private static SceneInstance? s_scneneInstance;
+
+        public static bool IsLoaded { get; private set; }
 
         private void Awake()
         {
-            Instance = this;
-        }
-    }
-
-    public class SceneLoadProcess
-    {
-        public event Action<float> Loading;
-        public event Action LoadingCompleted;
-        public event Action LoadingStart;
-        public event Action LoadingSuccess;
-
-        private readonly bool _activeOnLoad;
-        private readonly bool _loadAdditively;
-        private readonly object _sceneReference;
-        
-        public bool ShowLoadingSCreen { get; private set; }
-
-        public bool IsLoaded { get; private set; }
-        private SceneInstance? _sceneInstance;
-
-        public SceneLoadProcess(object sceneReference,
-                                bool showLoading = false,
-                                bool activeOnLoad = true,
-                                bool loadAdditively = false)
-        {
-            _sceneReference = sceneReference;
-            _loadAdditively = loadAdditively;
-            _activeOnLoad = activeOnLoad;
-            ShowLoadingSCreen = showLoading;
+            s_instance = this;
         }
 
-        private void StartLoadScene()
+        public static event Action<float> Loading;
+        public static event Action LoadingCompleted;
+        public static event Action LoadSuccess;
+
+        public static event Action SwitchSceneStart;
+
+        public static void SwitchScene(object sceneReference, bool loadAdditively = false)
         {
-            SceneLoader.Instance.StartCoroutine(LoadSceneCoroutine());
+            SwitchSceneStart?.Invoke();
+            s_instance.StartCoroutine(LoadSceneCoroutine(sceneReference, false, loadAdditively));
         }
 
-        public void ActiveScene()
+        public static void LoadScene(object sceneReference, bool loadAdditively = false)
         {
-            AsyncOperation asyncOperation = _sceneInstance?.ActivateAsync();
+            s_instance.StartCoroutine(LoadSceneCoroutine(sceneReference, false, loadAdditively));
+        }
+
+        public static void ActiveScene()
+        {
+            AsyncOperation asyncOperation = s_scneneInstance?.ActivateAsync();
             if (asyncOperation is null) return;
             asyncOperation.completed += operation =>
             {
                 IsLoaded = false;
-                _sceneInstance = default;
+                s_scneneInstance = default;
                 LoadingCompleted?.Invoke();
             };
         }
 
-        private IEnumerator LoadSceneCoroutine()
+        private static IEnumerator LoadSceneCoroutine(object sceneReference,
+                                                      bool activeOnLoad,
+                                                      bool loadAdditively)
         {
-            LoadingStart?.Invoke();
-
-            AsyncOperationHandle<SceneInstance> asyncOperation = Addressables.LoadSceneAsync(_sceneReference,
-                _loadAdditively ? LoadSceneMode.Additive : LoadSceneMode.Single,
-                _activeOnLoad
+            AsyncOperationHandle<SceneInstance> asyncOperation = Addressables.LoadSceneAsync(sceneReference,
+                loadAdditively ? LoadSceneMode.Additive : LoadSceneMode.Single,
+                activeOnLoad
             );
 
             while (asyncOperation.Status != AsyncOperationStatus.Succeeded)
@@ -84,15 +72,16 @@ namespace Core
                 yield return null;
             }
 
-            if (_activeOnLoad)
+
+            if (activeOnLoad)
             {
                 LoadingCompleted?.Invoke();
                 yield break;
             }
 
-            LoadingSuccess?.Invoke();
+            LoadSuccess?.Invoke();
             IsLoaded = true;
-            _sceneInstance = asyncOperation.Result;
+            s_scneneInstance = asyncOperation.Result;
         }
     }
 }

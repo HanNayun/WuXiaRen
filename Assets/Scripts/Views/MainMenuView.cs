@@ -7,9 +7,11 @@ namespace Views
 {
     public class MainMenuView : View
     {
-        [SerializeField] private AssetReference _gameStartScene;
+        [SerializeField]
+        private AssetReference _gameStartScene;
 
-        [SerializeField] private bool _debugMode;
+        [SerializeField]
+        private bool _debugMode;
 
         private VisualElement _newGameBtn;
 
@@ -36,10 +38,7 @@ namespace Views
 
         private void StartNewGame()
         {
-            SceneLoadProcess sceneLoadProcess = _debugMode
-                ? new SceneLoadProcess(AddressableSceneKeys.DebugRoomScene)
-                : new SceneLoadProcess(_gameStartScene, true, false);
-            
+            SceneLoader.SwitchScene(_debugMode ? AddressableSceneKeys.DebugRoomScene : _gameStartScene);
         }
     }
 }
