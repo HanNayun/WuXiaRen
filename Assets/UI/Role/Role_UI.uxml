@@ -1,0 +1,7 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Role/Role_USS.uss?fileID=7433441132597879392&amp;guid=3e8b77b5029a547759f303cfd0acadcb&amp;type=3#Role_USS" />
+    <engine:VisualElement name="Body" style="flex-grow: 1;">
+        <engine:VisualElement name="StandingAavtar" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Pictures/SP_Reo.PNG?fileID=2800000&amp;guid=1131c60509cea48ecb0c6a2e9ae477f2&amp;type=3#SP_Reo&quot;);" />
+        <engine:Label text="Label" name="NameLabel" style="position: absolute;" />
+    </engine:VisualElement>
+</engine:UXML>

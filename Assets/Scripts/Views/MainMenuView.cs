@@ -7,11 +7,9 @@ namespace Views
 {
     public class MainMenuView : MonoBehaviour
     {
-        [SerializeField]
-        private AssetReference _gameStartScene;
+        [SerializeField] private AssetReference _gameStartScene;
 
-        [SerializeField]
-        private bool _debugMode;
+        [SerializeField] private bool _debugMode;
 
         private VisualElement _newGameBtn;
 
@@ -38,14 +36,11 @@ namespace Views
 
         private void StartNewGame()
         {
-            if (_debugMode)
-            {
-                SceneLoader.LoadScene(SceneKey.DebugRoomScene);
-            }
-            else
-            {
-                SceneLoader.LoadScene(_gameStartScene);
-            }
+            SceneLoadProcess sceneLoadProcess = _debugMode
+                ? new SceneLoadProcess(AddressableSceneKeys.DebugRoomScene)
+                : new SceneLoadProcess(_gameStartScene);
+            
+            sceneLoadProcess.StartLoadScene();
         }
     }
 }

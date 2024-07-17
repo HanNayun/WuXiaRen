@@ -3,7 +3,7 @@
     <engine:VisualElement name="BodyDiv" >
         <engine:VisualElement name="BtnsDiv" >
             <engine:VisualElement name="BtnContinueGame" class="btn" >
-                <engine:Label text="Continue Game" name="Label" class="btnText" />
+                <engine:Label text="Continue Game"  class="btnText" />
             </engine:VisualElement>
             <engine:VisualElement name="BtnLoadGame" class="btn" >
                 <engine:Label text="Load Game" class="btnText" />

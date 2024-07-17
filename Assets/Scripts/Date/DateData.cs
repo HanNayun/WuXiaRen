@@ -1,12 +1,8 @@
 using UnityEngine;
 
-namespace TimeLine
+namespace Date
 {
-    public interface IDate
-    {
-        void PassPeriods(uint passedPeriodCnt);
-    }
-
+    [CreateAssetMenu(fileName = "DateData_", menuName = "Data/DateData", order = 0)]
     public class DateData : ScriptableObject
     {
         public enum DayPeriod
@@ -45,15 +41,4 @@ namespace TimeLine
         public uint Year => _passedPeriodCnt / (PeriodCntPerDay * DayCntPerMonth * MonthCntPerYear);
     }
 
-    public class Date : DateData, IDate
-    {
-        public Date(uint passedPeriodCnt) : base(passedPeriodCnt)
-        {
-        }
-
-        public void PassPeriods(uint passedPeriodCnt)
-        {
-            _passedPeriodCnt += passedPeriodCnt;
-        }
-    }
 }

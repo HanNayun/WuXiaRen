@@ -1,3 +1,5 @@
+using Core;
+using Date;
 using UnityEngine;
 
 namespace TimeLine
@@ -6,7 +8,7 @@ namespace TimeLine
     {
         public delegate void TimeChangeHandler(DateData before, DateData now, uint offset);
 
-        private Date _date;
+        private Date.Date _date;
         public DateData Date => _date;
 
         private void Awake()
