@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 namespace Views
 {
-    public class MainMenuView : MonoBehaviour
+    public class MainMenuView : View
     {
         [SerializeField] private AssetReference _gameStartScene;
 
@@ -38,9 +38,8 @@ namespace Views
         {
             SceneLoadProcess sceneLoadProcess = _debugMode
                 ? new SceneLoadProcess(AddressableSceneKeys.DebugRoomScene)
-                : new SceneLoadProcess(_gameStartScene);
+                : new SceneLoadProcess(_gameStartScene, true, false);
             
-            sceneLoadProcess.StartLoadScene();
         }
     }
 }

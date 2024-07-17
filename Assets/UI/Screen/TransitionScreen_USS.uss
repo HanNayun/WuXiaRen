@@ -1,0 +1,9 @@
+.transition-image {
+    flex-grow: 1;
+    transition-property: background-color;
+    transition-duration: 2s;
+}
+
+.fade {
+    background-color: rgb(0, 0, 0);
+}

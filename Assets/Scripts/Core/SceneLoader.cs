@@ -5,6 +5,7 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.SceneManagement;
+using Views;
 
 namespace Core
 {
@@ -31,44 +32,31 @@ namespace Core
         public event Action LoadingStart;
         public event Action LoadingSuccess;
 
-        private readonly bool _bActiveOnLoad;
-        private readonly bool _bLoadAdditive;
-        private readonly bool _bShowLoadingScreen;
+        private readonly bool _activeOnLoad;
+        private readonly bool _loadAdditively;
         private readonly object _sceneReference;
+        
+        public bool ShowLoadingSCreen { get; private set; }
 
         public bool IsLoaded { get; private set; }
-        public bool ShowLoading { get; private set; }
-
         private SceneInstance? _sceneInstance;
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sceneReference">
-        /// An addressable scene key or an asset reference to a scene
-        /// </param>
-        /// <param name="bShowLoadingScreen"></param>
-        /// <param name="bLoadAdditive"></param>
-        /// <param name="bActiveOnLoad"></param>
         public SceneLoadProcess(object sceneReference,
-                                bool bShowLoadingScreen = false,
-                                bool bLoadAdditive = false,
-                                bool bActiveOnLoad = true)
+                                bool showLoading = false,
+                                bool activeOnLoad = true,
+                                bool loadAdditively = false)
         {
             _sceneReference = sceneReference;
-            _bShowLoadingScreen = bShowLoadingScreen;
-            _bLoadAdditive = bLoadAdditive;
-            _bActiveOnLoad = bActiveOnLoad;
+            _loadAdditively = loadAdditively;
+            _activeOnLoad = activeOnLoad;
+            ShowLoadingSCreen = showLoading;
         }
 
-        public void StartLoadScene()
+        private void StartLoadScene()
         {
             SceneLoader.Instance.StartCoroutine(LoadSceneCoroutine());
         }
 
-        /// <summary>
-        /// Active the loaded scene, only work if pass bActiveOnLoad as false when creating SceneLoadProcess
-        /// </summary>
         public void ActiveScene()
         {
             AsyncOperation asyncOperation = _sceneInstance?.ActivateAsync();
@@ -84,10 +72,10 @@ namespace Core
         private IEnumerator LoadSceneCoroutine()
         {
             LoadingStart?.Invoke();
-            ShowLoading = _bShowLoadingScreen;
+
             AsyncOperationHandle<SceneInstance> asyncOperation = Addressables.LoadSceneAsync(_sceneReference,
-                _bLoadAdditive ? LoadSceneMode.Additive : LoadSceneMode.Single,
-                _bActiveOnLoad
+                _loadAdditively ? LoadSceneMode.Additive : LoadSceneMode.Single,
+                _activeOnLoad
             );
 
             while (asyncOperation.Status != AsyncOperationStatus.Succeeded)
@@ -96,7 +84,7 @@ namespace Core
                 yield return null;
             }
 
-            if (_bActiveOnLoad)
+            if (_activeOnLoad)
             {
                 LoadingCompleted?.Invoke();
                 yield break;
