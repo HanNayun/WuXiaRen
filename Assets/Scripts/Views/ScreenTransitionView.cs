@@ -1,10 +1,7 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using Core;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 namespace Views
@@ -20,7 +17,7 @@ namespace Views
         private void Awake()
         {
             _transitionImg = GetComponent<UIDocument>().rootVisualElement.Q("TransitionImg");
-            _waitUntilSceneLoaded = new WaitUntil(()=>SceneLoader.IsLoaded);
+            _waitUntilSceneLoaded = new WaitUntil(() => SceneLoader.IsLoaded);
             SceneLoader.SwitchSceneStart += FadeOut;
             SceneLoader.LoadingCompleted += FadeIn;
         }
@@ -28,7 +25,7 @@ namespace Views
         public event Action FadeOutEnd;
         public event Action FadeInEnd;
 
-        IEnumerator ActiveSceneCoroutine()
+        private IEnumerator ActiveSceneCoroutine()
         {
             yield return _waitUntilSceneLoaded;
             SceneLoader.ActiveScene();
@@ -46,10 +43,7 @@ namespace Views
 
         private void FadeIn()
         {
-            _transitionImg.RegisterCallbackOnce<TransitionEndEvent>(evt =>
-            {
-                FadeInEnd?.Invoke();
-            });
+            _transitionImg.RegisterCallbackOnce<TransitionEndEvent>(evt => { FadeInEnd?.Invoke(); });
             _transitionImg.RemoveFromClassList(FadeClassKey);
         }
     }

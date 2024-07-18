@@ -1,12 +1,10 @@
 using System;
 using System.Collections;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.SceneManagement;
-using Views;
 
 namespace Core
 {
@@ -19,7 +17,7 @@ namespace Core
     public class SceneLoader : MonoBehaviour
     {
         private static SceneLoader s_instance;
-        private static SceneInstance? s_scneneInstance;
+        private static SceneInstance? s_sceneInstance;
 
         public static bool IsLoaded { get; private set; }
 
@@ -31,7 +29,6 @@ namespace Core
         public static event Action<float> Loading;
         public static event Action LoadingCompleted;
         public static event Action LoadSuccess;
-
         public static event Action SwitchSceneStart;
 
         public static void SwitchScene(object sceneReference, bool loadAdditively = false)
@@ -47,12 +44,12 @@ namespace Core
 
         public static void ActiveScene()
         {
-            AsyncOperation asyncOperation = s_scneneInstance?.ActivateAsync();
+            AsyncOperation asyncOperation = s_sceneInstance?.ActivateAsync();
             if (asyncOperation is null) return;
             asyncOperation.completed += operation =>
             {
                 IsLoaded = false;
-                s_scneneInstance = default;
+                s_sceneInstance = default;
                 LoadingCompleted?.Invoke();
             };
         }
@@ -81,7 +78,7 @@ namespace Core
 
             LoadSuccess?.Invoke();
             IsLoaded = true;
-            s_scneneInstance = asyncOperation.Result;
+            s_sceneInstance = asyncOperation.Result;
         }
     }
 }
