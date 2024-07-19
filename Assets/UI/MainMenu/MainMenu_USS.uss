@@ -34,7 +34,7 @@
     -unity-text-align: upper-center;
     color: rgb(253, 240, 213);
     -unity-font-style: bold;
-    -unity-font-definition: url("project://database/Assets/Settings/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&guid=d43d457b1ebcb47f08a6dd6b8e5ce195&type=3#NotInter-Regular");
+    -unity-font-definition: url("project://database/Assets/Fonts/Font_00.ttf?fileID=12800000&guid=15d428fe644f64d4c845125872b85591&type=3#Font_00");
 }
 
 .btn:hover {
