@@ -2,16 +2,15 @@
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.UIElements;
+using Views.UiDocuments;
 
 namespace Views
 {
-    public class MainMenuView : View
+    public class MainMenuView : DocumentView
     {
-        [SerializeField]
-        private AssetReference _gameStartScene;
+        [SerializeField] private AssetReference _gameStartScene;
 
-        [SerializeField]
-        private bool _debugMode;
+        [SerializeField] private bool _debugMode;
 
         private VisualElement _newGameBtn;
 

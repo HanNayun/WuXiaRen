@@ -3,10 +3,11 @@ using System.Collections;
 using Core;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Views.UiDocuments;
 
 namespace Views
 {
-    public class ScreenTransitionView : View
+    public class ScreenTransitionView : DocumentView
     {
         private const string FadeClassKey = "fade";
 
