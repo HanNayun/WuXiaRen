@@ -27,7 +27,7 @@ namespace Core
             }
 
             string address = addressAttribute.Address;
-            var op=  Addressables.LoadAssetAsync<TAsset>(address);
+            return Addressables.LoadAssetAsync<TAsset>(address);
         }
     }
 }

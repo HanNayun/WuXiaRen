@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Views.UGuies
+namespace Views
 {
     public class ObjectView : MonoBehaviour
     {
