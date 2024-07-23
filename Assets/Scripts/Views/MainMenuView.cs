@@ -12,14 +12,20 @@ namespace Views
         [SerializeField] private bool _debugMode;
 
         private VisualElement _newGameBtn;
+        private VisualElement _loadGameBtn;
 
         private Clickable _onClickNewGame;
+        private Clickable _onClickLoadGame;
 
         private void Awake()
         {
             VisualElement root = GetComponent<UIDocument>().rootVisualElement;
 
             _onClickNewGame = new Clickable(StartNewGame);
+            _onClickLoadGame = new Clickable(() =>
+            {
+            });
+            
             _newGameBtn = root.Q("BtnNewGame");
         }
 

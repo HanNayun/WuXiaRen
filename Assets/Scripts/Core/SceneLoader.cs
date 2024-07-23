@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -39,7 +40,7 @@ namespace Core
 
         public static void LoadScene(object sceneReference, bool loadAdditively = false)
         {
-            s_instance.StartCoroutine(LoadSceneCoroutine(sceneReference, false, loadAdditively));
+             s_instance.StartCoroutine(LoadSceneCoroutine(sceneReference, false, loadAdditively));
         }
 
         public static void ActiveScene()

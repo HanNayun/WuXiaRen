@@ -1,8 +1,9 @@
 using System;
-using System.Collections.Generic;
 using System.Reflection;
+using System.Threading;
+using System.Threading.Tasks;
 using Attributes;
-using Unity.VisualScripting;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -18,7 +19,7 @@ namespace Core
             s_instance = this;
         }
 
-        public static AsyncOperationHandle<TAsset> LoadAsset<TClass, TAsset>(Action onLoadComplete)
+        public static async Task<TAsset> LoadAssetAsync<TClass, TAsset>([CanBeNull] CancellationTokenSource cts)
         {
             AddressableAttribute addressAttribute = typeof(TClass).GetCustomAttribute<AddressableAttribute>(true);
             if (addressAttribute is null)
@@ -27,7 +28,23 @@ namespace Core
             }
 
             string address = addressAttribute.Address;
-            return Addressables.LoadAssetAsync<TAsset>(address);
+            AsyncOperationHandle<TAsset> loadOperation = Addressables.LoadAssetAsync<TAsset>(address);
+
+            cts?.Token.Register(() => Addressables.Release(loadOperation));
+
+            try
+            {
+                return await loadOperation.Task;
+            }
+            catch (TaskCanceledException)
+            {
+                Addressables.Release(loadOperation);
+                throw; // Rethrow the TaskCanceledException to ensure the method exits
+            }
+            finally
+            {
+                cts?.Dispose();
+            }
         }
     }
 }
