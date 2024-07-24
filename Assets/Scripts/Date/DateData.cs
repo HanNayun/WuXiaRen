@@ -16,19 +16,19 @@ namespace Date
         protected const uint DayCntPerMonth = 30;
         protected const uint MonthCntPerYear = 12;
 
-        [SerializeField] protected uint _passedPeriodCnt;
+        [SerializeField] protected uint passedPeriodCnt;
 
         public DateData(uint passedPeriodCnt)
         {
-            _passedPeriodCnt = passedPeriodCnt;
+            this.passedPeriodCnt = passedPeriodCnt;
         }
 
-        public DateData(DateData data) : this(data._passedPeriodCnt)
+        public DateData(DateData data) : this(data.passedPeriodCnt)
         {
         }
 
 
-        public DayPeriod Period => (_passedPeriodCnt % PeriodCntPerDay) switch
+        public DayPeriod Period => (passedPeriodCnt % PeriodCntPerDay) switch
         {
             0 => DayPeriod.Morning,
             1 => DayPeriod.Afternoon,
@@ -36,9 +36,8 @@ namespace Date
             _ => DayPeriod.Morning
         };
 
-        public uint Day => _passedPeriodCnt / PeriodCntPerDay % DayCntPerMonth;
-        public uint Month => _passedPeriodCnt / (PeriodCntPerDay * MonthCntPerYear) % MonthCntPerYear;
-        public uint Year => _passedPeriodCnt / (PeriodCntPerDay * DayCntPerMonth * MonthCntPerYear);
+        public uint Day => passedPeriodCnt / PeriodCntPerDay % DayCntPerMonth;
+        public uint Month => passedPeriodCnt / (PeriodCntPerDay * MonthCntPerYear) % MonthCntPerYear;
+        public uint Year => passedPeriodCnt / (PeriodCntPerDay * DayCntPerMonth * MonthCntPerYear);
     }
-
 }

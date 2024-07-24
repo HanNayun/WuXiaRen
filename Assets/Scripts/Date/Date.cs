@@ -14,7 +14,7 @@ namespace Date
 
         public void PassPeriods(uint passedPeriodCnt)
         {
-            _passedPeriodCnt += passedPeriodCnt;
+            base.passedPeriodCnt += passedPeriodCnt;
         }
     }
 }

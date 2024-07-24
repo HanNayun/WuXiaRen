@@ -15,8 +15,8 @@ MonoBehaviour:
   m_GroupName: ScriptableObjectData
   m_GUID: 75040aad1de8c4013894b4c3d4c193f4
   m_SerializeEntries:
-  - m_GUID: 1a3542bc20d3c4446a064e71b1cf9410
-    m_Address: Data/Role
+  - m_GUID: f857c0dea2b2048c397c04bd2997584f
+    m_Address: Data/Date
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

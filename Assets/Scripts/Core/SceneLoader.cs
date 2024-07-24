@@ -17,14 +17,14 @@ namespace Core
 
     public class SceneLoader : MonoBehaviour
     {
-        private static SceneLoader s_instance;
-        private static SceneInstance? s_sceneInstance;
+        private static SceneLoader _instance;
+        private static SceneInstance? _sceneInstance;
 
         public static bool IsLoaded { get; private set; }
 
         private void Awake()
         {
-            s_instance = this;
+            _instance = this;
         }
 
         public static event Action<float> Loading;
@@ -35,22 +35,22 @@ namespace Core
         public static void SwitchScene(object sceneReference, bool loadAdditively = false)
         {
             SwitchSceneStart?.Invoke();
-            s_instance.StartCoroutine(LoadSceneCoroutine(sceneReference, false, loadAdditively));
+            _instance.StartCoroutine(LoadSceneCoroutine(sceneReference, false, loadAdditively));
         }
 
         public static void LoadScene(object sceneReference, bool loadAdditively = false)
         {
-             s_instance.StartCoroutine(LoadSceneCoroutine(sceneReference, false, loadAdditively));
+             _instance.StartCoroutine(LoadSceneCoroutine(sceneReference, false, loadAdditively));
         }
 
         public static void ActiveScene()
         {
-            AsyncOperation asyncOperation = s_sceneInstance?.ActivateAsync();
+            AsyncOperation asyncOperation = _sceneInstance?.ActivateAsync();
             if (asyncOperation is null) return;
             asyncOperation.completed += operation =>
             {
                 IsLoaded = false;
-                s_sceneInstance = default;
+                _sceneInstance = default;
                 LoadingCompleted?.Invoke();
             };
         }
@@ -79,7 +79,7 @@ namespace Core
 
             LoadSuccess?.Invoke();
             IsLoaded = true;
-            s_sceneInstance = asyncOperation.Result;
+            _sceneInstance = asyncOperation.Result;
         }
     }
 }

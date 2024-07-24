@@ -4,12 +4,12 @@ namespace Views
 {
     public class ViewManager : MonoBehaviour
     {
-        private ViewManager s_instance;
+        private ViewManager _sInstance;
 
 
         private void Awake()
         {
-            s_instance = this;
+            _sInstance = this;
         }
 
         public void OpenView<T>() where T : DocumentView
