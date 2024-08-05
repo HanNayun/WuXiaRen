@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.UIElements;
 
-namespace Views
+namespace UI
 {
     public class MainMenuView : DocumentView
     {
@@ -13,21 +13,21 @@ namespace Views
 
         [SerializeField] private bool debugMode;
 
-        private VisualElement _newGameBtn;
-        private VisualElement _loadGameBtn;
+        private VisualElement newGameBtn;
+        private VisualElement loadGameBtn;
 
-        private Clickable _onClickNewGame;
-        private Clickable _onClickLoadGame;
+        private Clickable onClickNewGame;
+        private Clickable onClickLoadGame;
 
         private void Awake()
         {
             VisualElement root = GetComponent<UIDocument>().rootVisualElement;
 
-            _onClickNewGame = new Clickable(StartNewGame);
-            _onClickLoadGame = new Clickable(Handler);
+            onClickNewGame = new Clickable(StartNewGame);
+            onClickLoadGame = new Clickable(Handler);
 
-            _newGameBtn = root.Q("BtnNewGame");
-            _loadGameBtn = root.Q("BtnLoadGame");
+            newGameBtn = root.Q("BtnNewGame");
+            loadGameBtn = root.Q("BtnLoadGame");
             
             return;
             
@@ -55,14 +55,14 @@ namespace Views
 
         private void OnEnable()
         {
-            _newGameBtn.AddManipulator(_onClickNewGame);
-            _loadGameBtn.AddManipulator(_onClickLoadGame);
+            newGameBtn.AddManipulator(onClickNewGame);
+            loadGameBtn.AddManipulator(onClickLoadGame);
         }
 
         private void OnDisable()
         {
-            _newGameBtn.RemoveManipulator(_onClickNewGame);
-            _loadGameBtn.RemoveManipulator(_onClickLoadGame);
+            newGameBtn.RemoveManipulator(onClickNewGame);
+            loadGameBtn.RemoveManipulator(onClickLoadGame);
         }
 
         private void StartNewGame()

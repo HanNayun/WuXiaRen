@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Views
+namespace UI
 {
     public class DocumentView : MonoBehaviour
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace Views
+namespace UI
 {
     [AttributeUsage(AttributeTargets.Class)]
     public class ViewAttribute : Attribute

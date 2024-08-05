@@ -1,5 +1,6 @@
-using Date;
 using UnityEngine;
+using UnityEngine.Serialization;
+using GameDateData = GamePlay.GameDate.GameDateData;
 
 namespace Roles
 {
@@ -8,7 +9,7 @@ namespace Roles
     {
         [SerializeField] private string _roleName;
         [SerializeField] private Gender _gender;
-        [SerializeField] private DateData _birthDate;
+        [FormerlySerializedAs("_birthDate")] [SerializeField] private GameDateData birthGameDate;
 
         [SerializeField] private uint _healthPoint;
         [SerializeField] private uint _force;

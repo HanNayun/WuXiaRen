@@ -1,17 +1,30 @@
 using System;
+using UnityEditor.VersionControl;
 using UnityEngine;
 
 namespace Archive
 {
     public class ArchiveManager : MonoBehaviour
     {
-        public void SaveArchive(Archive archive)
+        
+        public async void SaveArchiveAsync()
         {
+            // 1. Iterate through all the data that needs to be saved
+
+            throw new NotImplementedException();
         }
 
-        public Archive LoadArchive(uint archiveId)
+        public async void LoadArchiveAsync(uint archiveId)
         {
-            throw new Exception("Not implemented yet");
+            // 1. load the archive from local
+            // 2. update the game data
+            throw new NotImplementedException();
+
+        }
+
+        private void UpdateGame()
+        {
+            
         }
     }
 }

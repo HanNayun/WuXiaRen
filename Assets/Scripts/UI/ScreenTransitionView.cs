@@ -4,7 +4,7 @@ using Core;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace Views
+namespace UI
 {
     public class ScreenTransitionView : DocumentView
     {
