@@ -1,13 +1,12 @@
 using Core;
-using GamePlay.GameDate;
+using GamePlay.Date;
 using UnityEngine;
-using GameDateData = GamePlay.GameDate.GameDateData;
 
 namespace TimeLine
 {
     public class TimeLineManager : MonoBehaviour
     {
-        public delegate void TimeChangeHandler(GameDateData before, GameDateData now, uint offset);
+        public delegate void TimeChangeHandler(GameDate before, GameDate now, uint offset);
 
 
         private void Awake()

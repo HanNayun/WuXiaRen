@@ -1,19 +1,31 @@
+using GamePlay.Date;
+using Roles;
 using UnityEngine;
-using UnityEngine.Serialization;
-using GameDateData = GamePlay.GameDate.GameDateData;
 
-namespace Roles
+namespace GamePlay.Roles
 {
     [CreateAssetMenu(fileName = "RoleData_", menuName = "Data/RoleData")]
     public class RoleData : ScriptableObject
     {
-        [SerializeField] private string _roleName;
-        [SerializeField] private Gender _gender;
-        [FormerlySerializedAs("_birthDate")] [SerializeField] private GameDateData birthGameDate;
+        [SerializeField]
+        private string _roleName;
 
-        [SerializeField] private uint _healthPoint;
-        [SerializeField] private uint _force;
-        [SerializeField] private uint _intelligence;
-        [SerializeField] private uint _charm;
+        [SerializeField]
+        private Gender _gender;
+
+        [SerializeField]
+        private GameDate _birthGameDate;
+
+        [SerializeField]
+        private uint _healthPoint;
+
+        [SerializeField]
+        private uint _force;
+
+        [SerializeField]
+        private uint _intelligence;
+
+        [SerializeField]
+        private uint _charm;
     }
 }

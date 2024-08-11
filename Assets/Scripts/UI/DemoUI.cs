@@ -1,8 +1,8 @@
 using System;
+using GamePlay.Date;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
-using GameDateData = GamePlay.GameDate.GameDateData;
 
 namespace UI
 {
@@ -10,7 +10,7 @@ namespace UI
     {
         private Label label;
 
-        [SerializeField] private GameDateData date;
+        [SerializeField] private GameDate date;
 
         private void Awake()
         {

@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace GamePlay.GameDate
+namespace GamePlay.Date
 {
-    public partial class GameDateData : ScriptableObject
+    public partial class GameDate 
     {
         public enum DayPeriod
         {
