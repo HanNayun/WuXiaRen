@@ -25,4 +25,4 @@ namespace UI
             label.text = dateStr;
         }
     }
-}
+}1
