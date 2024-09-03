@@ -1,4 +1,4 @@
-namespace Roles
+namespace GamePlay.Roles
 {
     public enum Gender
     {
