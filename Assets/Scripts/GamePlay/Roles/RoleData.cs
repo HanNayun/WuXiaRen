@@ -1,5 +1,5 @@
-using GamePlay.Date;
-using Roles;
+using System.Collections.Generic;
+using GamePlay.Roles.Bodys;
 using UnityEngine;
 
 namespace GamePlay.Roles
@@ -7,25 +7,27 @@ namespace GamePlay.Roles
     [CreateAssetMenu(fileName = "RoleData_", menuName = "Data/RoleData")]
     public class RoleData : ScriptableObject
     {
-        [SerializeField]
-        private string _roleName;
+        [SerializeField] private string _name;
+        [SerializeField] private Gender _gender;
+        [SerializeField] private uint _age;
+        [SerializeField] private string _avatar;
+        [SerializeField] private string _portraits;
 
-        [SerializeField]
-        private Gender _gender;
+        [SerializeField] private uint _defaultDefensePointCount;
+        [SerializeField] private uint _defaultPerRountRecoverDefensePointCount;
+        [SerializeField] private uint _defaultPerRoundDrawCardCount;
+        [SerializeField] private uint _maxHandCardCount;
+        [SerializeField] private Body _body;
+        [SerializeField] private IDictionary<uint, uint> _itemIdToCount;
 
-        [SerializeField]
-        private GameDate _birthGameDate;
+        public string Name => _name;
 
-        [SerializeField]
-        private uint _healthPoint;
+        public Gender Gender => _gender;
 
-        [SerializeField]
-        private uint _force;
+        public uint Age => _age;
 
-        [SerializeField]
-        private uint _intelligence;
+        public string Avatar => _avatar;
 
-        [SerializeField]
-        private uint _charm;
+        public string Portraits => _portraits;
     }
 }

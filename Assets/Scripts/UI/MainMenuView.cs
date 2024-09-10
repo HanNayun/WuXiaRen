@@ -28,9 +28,9 @@ namespace UI
 
             newGameBtn = root.Q("BtnNewGame");
             loadGameBtn = root.Q("BtnLoadGame");
-            
+
             return;
-            
+
             async void Handler()
             {
                 CancellationTokenSource cancellationTokenSource = new();
@@ -38,7 +38,9 @@ namespace UI
                 {
                     Task<ScriptableObject> task =
                         AddressableAssetLoader.LoadAssetAsync<ScriptableObject>(
-                            "Data/Date/DateData_StoryStartDate.asset", cancellationTokenSource.Token);
+                            "Data/Date/DateData_StoryStartDate.asset",
+                            cancellationTokenSource.Token
+                        );
                     await Task.WhenAll(task, Task.Run(() => cancellationTokenSource.Cancel()));
                 }
                 catch (TaskCanceledException)

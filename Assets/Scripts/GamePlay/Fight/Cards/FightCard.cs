@@ -4,9 +4,9 @@ namespace GamePlay.Fight
     {
         public enum Type
         {
-            Anger,
-            Calm,
-            Agile
+            Anger = 1,
+            Calm = 2,
+            Agile = 3
         }
 
         public Type CardType { get; private set; }
