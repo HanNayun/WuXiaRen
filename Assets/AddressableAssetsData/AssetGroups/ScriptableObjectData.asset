@@ -14,12 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GroupName: ScriptableObjectData
   m_GUID: 75040aad1de8c4013894b4c3d4c193f4
-  m_SerializeEntries:
-  - m_GUID: f857c0dea2b2048c397c04bd2997584f
-    m_Address: Data/Date
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 6d5bc9f955dbd2f408c2d98ba8a4f8d6, type: 2}
   m_SchemaSet:
