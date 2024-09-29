@@ -20,16 +20,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a5348a7633a6fe9499f084a5263e42c9
-    m_Address: DebugRoomScene
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: fd6f1ea454e34024880efdd53373cfa4
-    m_Address: WorldMapScene
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 6d5bc9f955dbd2f408c2d98ba8a4f8d6, type: 2}
   m_SchemaSet:

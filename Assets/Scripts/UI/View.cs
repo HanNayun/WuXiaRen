@@ -6,14 +6,12 @@ namespace UI
     {
     }
 
-    public abstract class View<TArgs> where TArgs : IViewArgs
+    [DisallowMultipleComponent]
+    public abstract class View<TArgs> : MonoBehaviour
+        where TArgs : IViewArgs
     {
-        public View()
-        {
-        }
-
-        public void Open()
-        {
-        }
+        public UILayers Layer { get; private set; } = UILayers.Basic;
+        public abstract void Open(TArgs args);
+        public abstract void Close();
     }
 }
